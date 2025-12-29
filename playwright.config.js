@@ -13,7 +13,11 @@ expect  : {
 
 },
 
-reporter : 'html',
+reporter: [
+  ['list'],
+  ['allure-playwright']
+],
+
 
  
   use: {
@@ -22,9 +26,8 @@ reporter : 'html',
     //browserName : 'firefox',
     //browserName : 'webkit',
     headless : false,
-    screenshot : 'on',
-    //trace : 'on', // for all the passed and failed test cases
-    trace : 'retain-on-failure',
+    screenshot: 'only-on-failure',
+    trace: 'on-first-retry'
     
   },
 
