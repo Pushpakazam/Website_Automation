@@ -27,7 +27,8 @@ reporter: [
     //browserName : 'webkit',
     headless : false,
     screenshot: 'only-on-failure',
-    trace: 'on-first-retry'
+    trace: 'on-first-retry',
+    video: 'retain-on-failure', 
     
   },
 

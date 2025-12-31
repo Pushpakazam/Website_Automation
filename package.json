@@ -11,6 +11,14 @@
   "devDependencies": {
     "@playwright/test": "^1.57.0",
     "@types/node": "^25.0.2",
-    "allure-playwright": "^3.4.3"
+    "allure-playwright": "^3.4.3",
+    "archiver": "^7.0.1",
+    "nodemailer": "^7.0.12",
+    "puppeteer": "^24.34.0"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "dotenv": "^17.2.3",
+    "http-server": "^14.1.1"
   }
 }

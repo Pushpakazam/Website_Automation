@@ -1,5 +1,14 @@
 const {test,expect} = require('@playwright/test');
-test('HomePage_Header',async({page})=>{
+/* 
+step-by-step workflow for testing this locally
+1.command : npx playwright test -->>>Run the tests
+2.command : allure generate allure-results --clean -o allure-report -->>creates the allure-report folder
+//command : allure generate allure-results --clean -o allure-report(Generate Allure HTML report & clean if any old report is there and output folder for the HTML report)
+//command : allure open allure-report(Open the Allure report in browser)
+3.command : node allure-to-pdf.js -->Generate PDF from Allure HTML report
+4.command : node send-allure-pdf.js --->Send PDF via email
+*/
+test.only('HomePage_Header',async({page})=>{
 
     await page.goto('https://kazam.energy/', { waitUntil: 'networkidle' });
     const acceptCookies = page.getByRole('button', { name: 'Accept all cookies' });
