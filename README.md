@@ -1,6 +1,6 @@
 # Playwright Automation Project
 
-This project contains automated tests for **[Your Project/Website Name]** using [Playwright](https://playwright.dev/).
+This project contains automated tests for **Website Automation** using [Playwright](https://playwright.dev/).
 
 ---
 
