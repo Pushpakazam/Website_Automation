@@ -1,4 +1,4 @@
-const { test } = require('@playwright/test');
+const { test,expect } = require('@playwright/test');
 const { HomePage } = require('../pages/HomePage');
 const { ZapProPage } = require('../pages/ZapProPage');
 test.describe('Zap Pro – Single Session Flow', () => {
@@ -67,7 +67,7 @@ test.describe('Zap Pro – Single Session Flow', () => {
 
   test('Book a Demo', async () => {
     await zap.bookADemo({
-      name: 'pushpa shivanna',
+      name: 'pushpa',
       email: 'pushpa@kazam.in',
       phone: '6363360267',
       organization: 'Kazam',

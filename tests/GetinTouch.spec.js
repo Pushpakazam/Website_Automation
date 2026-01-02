@@ -1,4 +1,5 @@
 const {test,expect} = require('@playwright/test');
+
 test('GetInTouch form',async({browser})=>{
 const context = await browser.newContext();
 const page = await context.newPage();
@@ -20,5 +21,6 @@ await contactForm.locator('input[type="checkbox"]').first().check();
 await page.getByRole('button',{name : 'Submit'}).click();
 await page.waitForSelector('text=We will get in touch with you soon.');
 await expect(page.getByText('We will get in touch with you soon.')).toBeVisible();
+
 });
 

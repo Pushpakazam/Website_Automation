@@ -17,7 +17,7 @@ pipeline {
 
         stage('Install Playwright Browsers') {
             steps {
-                bat 'npx playwright install chromium'
+                bat 'npx playwright install --with-deps'
             }
         }
 
@@ -27,28 +27,23 @@ pipeline {
             }
         }
 
-        stage('Generate Allure HTML') {
+        stage('Convert HTML Report to PDF') {
             steps {
-                bat 'allure generate allure-results --clean -o allure-report'
-            }
-        }
-
-        stage('Convert Allure to PDF') {
-            steps {
-                bat 'node utils/allure-to-pdf.js'
+                bat 'node utils/html-to-pdf.js'
             }
         }
 
         stage('Send Email with PDF') {
             steps {
-                bat 'node utils/send-allure-email.js'
+                bat 'node utils/send-pdf-report.js'
             }
         }
     }
 
     post {
         always {
-            archiveArtifacts artifacts: 'allure-report.pdf', fingerprint: true
+            archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
+            archiveArtifacts artifacts: 'Playwright_Test_Report.pdf', fingerprint: true
         }
     }
 }

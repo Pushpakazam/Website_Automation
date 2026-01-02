@@ -1,39 +1,34 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
 
-
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
-const config = ({
+const config = defineConfig({
   testDir: './tests',
-  timeout : 120 * 1000, //  override time for all tests playwright provides deafult time as 30 sec
-expect  : {
-  timeout : 120*1000, // assertion validation
 
-},
+  timeout: 120 * 1000, // override default 30s timeout
 
-reporter: [
-  ['list'],
-  ['allure-playwright']
-],
-
-
- 
-  use: {
-
-    browserName : 'chromium',
-    //browserName : 'firefox',
-    //browserName : 'webkit',
-    headless : false,
-    screenshot: 'only-on-failure',
-    trace: 'on-first-retry',
-    video: 'retain-on-failure', 
-    
+  expect: {
+    timeout: 120 * 1000, // assertion timeout
   },
 
+  reporter: [
+    ['html', { outputFolder: 'playwright-report', open: 'never' }], // Email
+    ['allure-playwright'] // Local only
+  ],
+
+  use: {
+    browserName: 'chromium',
+    // browserName: 'firefox',
+    // browserName: 'webkit',
+
+    headless: false,
+
+    screenshot: 'only-on-failure',
+    trace: 'on-first-retry',
+    video: 'retain-on-failure',
+  },
 });
 
-module.exports = config ;
-
-
+export default config;
